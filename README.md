@@ -2,3 +2,5 @@
 
 ## 1 We need to download the file
 * [fake_login_data.csv](https://github.com/user-attachments/files/19682913/fake_login_data.csv)
+
+## 2 After the download finished, we need to upload it to python
