@@ -63,5 +63,10 @@ print(df['login_duration'].max())
 ```
 df['is_anomaly'] = df['login_duration'] < 0
 ```
-
-
+- We tried to flag negative values in 'login_duration' using an 'is_anomly' column.
+- However, after checking, there are no negative values currently in the data.
+- All entries in 'is_anomaly' are 'False', meaning the dataset is clean.
+```
+print(df['is_anomaly'].value_counts())
+```
+<img width="362" alt="image" src="https://github.com/user-attachments/assets/8ea27853-3d36-4483-90f5-89d80608de60" />
