@@ -37,7 +37,7 @@ df.isnull().sum()
 - We want to make sure there are no missing (null) values in any column.
 <img width="268" alt="image" src="https://github.com/user-attachments/assets/e72d1376-ddfd-4835-a7c4-c583bd81cb52" />
 
-- ✅ The outputs are zeros, it means everything is good
+### ✅ The outputs are zeros, it means everything is good
 
 ## Step 6: Check if "login_hour" contains calues outside the range 0-23
 ```
@@ -50,10 +50,10 @@ print(sorted(df['login_hour'].unique()))
 
 ## Step 7: Check if "login_duration" contains outliers
 ```
-print(df['login_duration'].min())
-print(df['login_duration'].max())
+print("Min:", df['login_duration'].min())
+print("Max:", df['login_duration'].max())
 ```
-<img width="314" alt="image" src="https://github.com/user-attachments/assets/4de8f112-0883-414b-a1ec-6de334ce1958" />
+<img width="350" alt="image" src="https://github.com/user-attachments/assets/0a4302be-0c59-4190-84a5-cb2ad244c42b" />
 
 - 🛠️ After checking the column 'login_duration', we found a **negative value (-2.39)** which is not logically valid for session duration.
 - ❗ normally, we might delete or replace such values.
@@ -63,10 +63,33 @@ print(df['login_duration'].max())
 ```
 df['is_anomaly'] = df['login_duration'] < 0
 ```
-- We tried to flag negative values in 'login_duration' using an 'is_anomly' column.
-- However, after checking, there are no negative values currently in the data.
-- All entries in 'is_anomaly' are 'False', meaning the dataset is clean.
+### And then we need to use this code
+```
+df[df['is_anomaly'] == True]
+```
+<img width="627" alt="image" src="https://github.com/user-attachments/assets/80166829-47bb-416a-92b0-f15f4f95a5e7" />
+
+### ✅ As shown above, the row containing a negative value in 'login_duration' has been successfully indentified and flagged using the 'is_anomaly' column.
+
+#### This will help us later if we want to:
+- filter out suspicious records
+- investigate unusual login behaviors
+- or use this flag as a feature in machine learning models
+
 ```
 print(df['is_anomaly'].value_counts())
 ```
-<img width="362" alt="image" src="https://github.com/user-attachments/assets/8ea27853-3d36-4483-90f5-89d80608de60" />
+<img width="385" alt="image" src="https://github.com/user-attachments/assets/9770c562-1cda-415b-a0a4-d1cb80264bd3" />
+
+# Step 8: Check the number of the attempt of the 'failed_attempts'
+```
+sorted(df['failed_attempt'].unique())
+```
+<img width="315" alt="image" src="https://github.com/user-attachments/assets/2b0827f4-79a9-4088-bc07-28fe99555d96" />
+
+## Checking if the Min & Max attempts
+```
+print("Min:", df['failed_attempts'].min())
+print("Max:", df['failed_attempts'].max())
+```
+<img width="345" alt="image" src="https://github.com/user-attachments/assets/6363ad9a-1df5-4c4f-8b15-a9c82413e069" />
