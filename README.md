@@ -1,4 +1,4 @@
-# This page will explain how to fix the data from any wrong infomraiton.
+# This page will explain how to fix the data from any wrong information.
 
 ## 📥 Step 1: Download the dataset.
 - [fake_login_data.csv](https://github.com/user-attachments/files/19682913/fake_login_data.csv)
